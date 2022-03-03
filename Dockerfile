@@ -42,4 +42,4 @@ ENV OPENVSCODE_SERVER_ROOT=/home/${RELEASE_TAG}-linux-x64
 
 EXPOSE 3000
 
-ENTRYPOINT ${OPENVSCODE_SERVER_ROOT}/server.sh --port 3000
+ENTRYPOINT [ "/bin/sh", "-c", "exec ${OPENVSCODE_SERVER_ROOT}/bin/openvscode-server --host 0.0.0.0 --without-connection-token \"${@}\"", "--" ]
